@@ -1,12 +1,5 @@
-.article-item__main {
+.article {
 	display: flex;
 	flex-direction: column;
-}
-
-.article-item__info {
-	display: flex;
-}
-
-.article-item__detail {
-	display: flex;
+	gap: 36px;
 }

@@ -3,6 +3,22 @@
 	padding: 0;
 }
 
+.header-button {
+	position: fixed;
+	bottom: 5%;
+	right: 5%;
+
+	font-size: 56px;
+
+	cursor: pointer;
+
+	color: #c0c4cc;
+}
+
+.header-button:hover {
+	color: #409eff;
+}
+
 .header {
 	position: fixed;
 	z-index: 2;

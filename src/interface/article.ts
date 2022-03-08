@@ -1,8 +1,6 @@
 export interface ArticleInterface {
 	readonly id: number
-	readonly create_at: number
-
-	readonly username: string
+	readonly create_at: string
 
 	readonly nickname: string
 

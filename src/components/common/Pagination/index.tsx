@@ -7,7 +7,6 @@ export interface PaginationInterface {
 	changeSize: (size: number) => void
 	changeIndex: (size: number) => void
 	total: number
-	change: () => void
 	index: number
 	size: number
 }

@@ -1,10 +1,13 @@
 import { FC, ReactElement, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { HeaderMenu } from '../types/heder'
-import { CloseCircleOutlined, SearchOutlined } from '@ant-design/icons'
+import {
+	CloseCircleOutlined,
+	PlusCircleFilled,
+	SearchOutlined
+} from '@ant-design/icons'
 import './index.css'
-import { parser, stringify } from '@/utils/query'
-import Toptip from '../Toptip'
+import { stringify } from '@/utils/query'
 
 export interface HeaderInterface {
 	menus: HeaderMenu[]
@@ -24,22 +27,14 @@ const Header: FC<HeaderInterface> = ({ menus }): ReactElement => {
 
 		const { pathname } = location
 
-		if (pathname === '/article') {
-			setSearchParams({ search: value })
-		} else {
-			navigate({ pathname: `/article${stringify({ search: value })}` })
-		}
+		if (pathname === '/article') setSearchParams({ search: value })
+		else navigate({ pathname: `/article${stringify({ search: value })}` })
 	}
 
 	const replace = (path: string) => {
 		if (path === location.pathname) return
 		else navigate(path)
 	}
-
-	useEffect(() => {
-		if (location.pathname !== '/article') setValue('')
-		if (!parser(location.search).search) setSearchParams({})
-	}, [location.pathname])
 
 	useEffect(() => {
 		if (searchParams.has('search')) setValue(searchParams.get('search')!)
@@ -73,26 +68,31 @@ const Header: FC<HeaderInterface> = ({ menus }): ReactElement => {
 			>
 				<SearchOutlined onClick={search} className='header-input__searcher' />
 
-				<Toptip direction='bottom' title={'按下回车搜索'}>
-					<input
-						onFocus={() => {
-							setFocus('is-focus')
-							setHover('')
-						}}
-						onBlur={() => setFocus('')}
-						onKeyUp={({ keyCode }) => keyCode === 13 && search()}
-						value={value}
-						onChange={({ target }) => setValue(target.value)}
-						ref={InputRef}
-						type='text'
-						placeholder='搜索标题...'
-					/>
-				</Toptip>
+				<input
+					onFocus={() => {
+						setFocus('is-focus')
+						setHover('')
+					}}
+					onBlur={() => setFocus('')}
+					onKeyUp={({ keyCode }) => keyCode === 13 && search()}
+					value={value}
+					onChange={({ target }) => setValue(target.value)}
+					ref={InputRef}
+					type='text'
+					placeholder='搜索标题...'
+				/>
 
 				<CloseCircleOutlined
 					onClick={() => setValue('')}
 					className={'header-input__cleaner' + (value ? ' is-valuable' : '')}
 				/>
+			</div>
+
+			<div
+				className='header-button transition'
+				onClick={() => navigate('/article/write')}
+			>
+				<PlusCircleFilled />
 			</div>
 		</div>
 	)
