@@ -1,6 +1,7 @@
 import request from '@/api/request'
 import { ArticleInterface } from '@/interface/article'
 import { StoreInterface } from '@/interface/redux'
+import { ResponseInterface } from '@/interface/response'
 import { setArticle } from '@/redux/actions/article'
 import { stringify } from '@/utils/query'
 import { FC, useEffect, useState } from 'react'
@@ -14,24 +15,16 @@ export interface HomeInterface {
 }
 
 const Home: FC<HomeInterface> = ({ article, setArticle }) => {
-	const [pagesize, setPageSize] = useState(15)
-	const [pageIndex, setPageIndex] = useState(0)
 	const navigate = useNavigate()
 
 	const getArticle = async () => {
-		const result = await request<ArticleInterface[]>(
-			`/data/article${stringify({ limit: pagesize, offset: pageIndex })}`
+		const {
+			result: { data }
+		} = await request<ArticleInterface[]>(
+			`/data/article${stringify({ limit: 10, offset: 0 })}`
 		)
 
-		setArticle(result)
-	}
-
-	const getArticleDetail = (id: number) => {
-		navigate(`/article/${id}`)
-	}
-
-	const deleteArticle = async (id: number) => {
-		await request('/data/article', 'delete', stringify({ id }))
+		setArticle(data)
 	}
 
 	useEffect(() => {
@@ -40,11 +33,11 @@ const Home: FC<HomeInterface> = ({ article, setArticle }) => {
 
 	return (
 		<div className='home'>
-			{article.map(item => (
-				<div onClick={() => getArticleDetail(item.id)} key={item.id}>
-					{item.id}
-				</div>
-			))}
+			<div className='home_article-container'>
+				{article.map(item => (
+					<div key={item.id}>{item.content}</div>
+				))}
+			</div>
 		</div>
 	)
 }

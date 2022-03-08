@@ -1,5 +1,5 @@
 import { ArticleInterface } from './article'
 
-export class StoreInterface {
-	constructor(public readonly article: ArticleInterface[]) {}
+export interface StoreInterface {
+	readonly article: ArticleInterface[]
 }

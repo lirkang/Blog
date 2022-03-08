@@ -1,6 +1,16 @@
 {
-	"extends": "./paths.json",
 	"compilerOptions": {
+		"baseUrl": "./src/",
+		"paths": {
+			"@/*": ["*"],
+			"@/views/*": ["views/*"],
+			"@/components/*": ["components/*"],
+			"@/api/*": ["api/*"],
+			"@/utils/*": ["utils/*"],
+			"@/redux/*": ["redux/*"],
+			"@/interface/*": ["interface/*"],
+			"@/styles/*": ["styles/*"]
+		},
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
