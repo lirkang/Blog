@@ -45,6 +45,7 @@
 }
 
 .article-item__cover img {
+	cursor: pointer;
 	width: 100%;
 	height: auto;
 	border: 1px #eee solid;

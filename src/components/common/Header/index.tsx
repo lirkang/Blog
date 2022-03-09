@@ -88,12 +88,14 @@ const Header: FC<HeaderInterface> = ({ menus }): ReactElement => {
 				/>
 			</div>
 
-			<div
-				className='header-button transition'
-				onClick={() => navigate('/article/write')}
-			>
-				<PlusCircleFilled />
-			</div>
+			{location.pathname !== '/article/write' && (
+				<div
+					className='header-button transition'
+					onClick={() => navigate('/article/write')}
+				>
+					<PlusCircleFilled />
+				</div>
+			)}
 		</div>
 	)
 }

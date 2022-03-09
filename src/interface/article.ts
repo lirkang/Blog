@@ -15,3 +15,21 @@ export interface ArticleInterface {
 	readonly delete: number
 	readonly content: string
 }
+
+export const defaultArticle: ArticleInterface = {
+	id: -1,
+	create_at: '',
+
+	nickname: '',
+
+	title: '',
+
+	comment_count: -1,
+
+	visit_count: -1,
+
+	cover: '',
+
+	delete: 0,
+	content: ''
+}

@@ -24,7 +24,11 @@ const ArticleItem: FC<ArticleItemInterface> = ({
 	return (
 		<div key={id} className='article-item'>
 			<div className='article-item__cover'>
-				<img src={'http://localhost:623/public/' + cover} alt='封面' />
+				<img
+					src={'http://localhost:623/public/' + cover}
+					alt='封面'
+					onClick={() => onClick(id)}
+				/>
 			</div>
 
 			<div className='article-item__detail'>
