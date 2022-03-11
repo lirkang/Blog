@@ -7,7 +7,7 @@ import {
 	SearchOutlined
 } from '@ant-design/icons'
 
-import 'styles/header.css'
+import 'styles/header.scss'
 
 import { stringify } from 'utils/query'
 

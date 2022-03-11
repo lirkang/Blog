@@ -6,7 +6,7 @@ import {
 	ClockCircleFilled
 } from '@ant-design/icons'
 
-import 'styles/article-info.css'
+import 'styles/article-info.scss'
 
 export interface ArticleInfoInterface {
 	visit_count: number

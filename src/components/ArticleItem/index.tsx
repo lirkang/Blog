@@ -4,7 +4,7 @@ import ArticleInfo from '../ArticleInfo'
 
 import MarkDown from 'react-markdown'
 
-import 'styles/article-item.css'
+import 'styles/article-item.scss'
 
 export interface ArticleItemInterface extends ArticleInterface {
 	onClick: (id: number) => void

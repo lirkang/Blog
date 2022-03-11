@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import MarkDown from 'react-markdown'
 
-import 'styles/article-detail.css'
+import 'styles/article-detail.scss'
 
 import { stringify } from 'utils/query'
 import { CommentInterface } from 'types/comment'

@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import 'styles/article.css'
+import 'styles/article.scss'
 
 export interface ArticlePropInterface {
 	article: ArticleInterface[]

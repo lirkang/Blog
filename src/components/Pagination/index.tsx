@@ -1,7 +1,7 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
 
-import 'styles/pagination.css'
+import 'styles/pagination.scss'
 
 export interface PaginationInterface {
 	changeSize: (size: number) => void

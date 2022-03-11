@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import 'styles/toptip.css'
+import 'styles/toptip.scss'
 
 export interface ToptipInterface {
 	title: string | number
