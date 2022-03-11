@@ -1,29 +1,29 @@
 .pagination {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	justify-content: end;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: end;
 }
 
 .pagination-button.arrow {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 .pagination-button {
-	font-weight: bold;
-	font-size: 14px;
-	padding: 8px;
-	margin: 0 4px;
-	cursor: pointer;
-	color: #303133;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px;
+  margin: 0 4px;
+  cursor: pointer;
+  color: #303133;
 }
 
 .pagination-button:hover,
 .pagination-button.is-active {
-	color: #409eff;
+  color: #409eff;
 }
 
 .pagination-button.arrow.disabled {
-	color: #606266;
-	cursor: not-allowed;
+  color: #606266;
+  cursor: not-allowed;
 }

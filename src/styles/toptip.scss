@@ -1,71 +1,71 @@
 .toptip {
-	position: relative;
+  position: relative;
 }
 
 .toptip-tip {
-	min-width: 64px;
-	text-align: center;
-	color: #303133;
-	opacity: 0;
-	z-index: 1;
-	visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: #fff;
-	border: 1px solid #909399;
-	padding: 8px 16px;
-	border-radius: 8px;
-	cursor: pointer;
+  min-width: 64px;
+  text-align: center;
+  color: #303133;
+  opacity: 0;
+  z-index: 1;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #909399;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .toptip-tip.top {
-	transform: translate(-10%, -125%);
+  transform: translate(-10%, -125%);
 }
 
 .toptip-tip.bottom {
-	transform: translate(10%, 125%);
+  transform: translate(10%, 125%);
 }
 
 .toptip__children {
-	display: inline-block;
-	cursor: pointer;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .toptip-tip:hover {
-	border: 1px solid #303133;
+  border: 1px solid #303133;
 }
 
 .toptip-tip:hover::after {
-	border-bottom: 1px solid #303133;
-	border-right: 1px solid #303133;
+  border-bottom: 1px solid #303133;
+  border-right: 1px solid #303133;
 }
 
 .toptip-tip::after {
-	position: absolute;
-	z-index: -1;
-	left: 0;
-	bottom: 0;
-	display: block;
-	content: '';
-	width: 10px;
-	height: 10px;
-	background-color: #fff;
-	border-bottom: 1px solid #909399;
-	border-right: 1px solid #909399;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #909399;
+  border-right: 1px solid #909399;
 }
 
 .toptip-tip.top::after {
-	border-top-left-radius: 4px;
-	transform: translate(150%, 6px) rotate(45deg);
+  border-top-left-radius: 4px;
+  transform: translate(150%, 6px) rotate(45deg);
 }
 
 .toptip-tip.bottom::after {
-	border-bottom-right-radius: 4px;
-	transform: translate(200%, -32px) rotate(-135deg);
+  border-bottom-right-radius: 4px;
+  transform: translate(200%, -32px) rotate(-135deg);
 }
 
 .toptip:hover .toptip-tip {
-	opacity: 1;
-	visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }

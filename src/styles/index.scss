@@ -1,23 +1,27 @@
+@mixin padding {
+  padding: 24px;
+}
+
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	background-color: #eee;
+  background-color: #eee;
 }
 
 .router {
-	padding: 128px 128px 24px 128px;
-	min-width: 1250px;
-	max-width: 1300px;
-	margin: 0 auto;
+  padding: 128px 128px $padding 128px;
+  min-width: 1250px;
+  max-width: 1300px;
+  margin: 0 auto;
 
-	border: 1px solid #eee;
+  border: 1px solid #eee;
 
-	background-color: #fff;
+  background-color: #fff;
 }
 
 .transition {
-	transition: all 0.2s;
+  transition: all 0.2s;
 }

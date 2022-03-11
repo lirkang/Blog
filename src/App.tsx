@@ -10,24 +10,24 @@ import Article from 'views/Article'
 import { HeaderMenu } from 'types/heder'
 
 function App() {
-	const menus: HeaderMenu[] = [
-		{ icon: <HomeOutlined />, path: '/', title: '首页' },
-		{ icon: <UnorderedListOutlined />, path: '/article', title: '文章列表' }
-	]
+  const menus: HeaderMenu[] = [
+    { icon: <HomeOutlined />, path: '/', title: '首页' },
+    { icon: <UnorderedListOutlined />, path: '/article', title: '文章列表' }
+  ]
 
-	return (
-		<>
-			<Header menus={menus} />
+  return (
+    <>
+      <Header menus={menus} />
 
-			<div className='router'>
-				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/article' element={<Article />} />
-					<Route path='/article/detail' element={<ArticleDetail />} />
-				</Routes>
-			</div>
-		</>
-	)
+      <div className='router'>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/article' element={<Article />} />
+          <Route path='/article/detail' element={<ArticleDetail />} />
+        </Routes>
+      </div>
+    </>
+  )
 }
 
 export default App

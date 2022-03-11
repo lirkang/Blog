@@ -1,32 +1,32 @@
 .article-comment__container {
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
-	padding: 24px 0;
-	margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0;
+  margin: 12px 0;
 }
 
 .article-comment__title {
-	color: #303133;
-	font-weight: bold;
-	font-size: 18px;
+  color: #303133;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .article-detail__title {
-	color: #303133;
+  color: #303133;
 
-	font-weight: bold;
-	font-size: 48px;
-	margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 48px;
+  margin-bottom: 12px;
 }
 
 .article-detail__content {
-	color: #303133;
+  color: #303133;
 
-	margin-top: 12px;
+  margin-top: 12px;
 }
 
 .detail-comment__user-info {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }

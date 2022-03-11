@@ -1,38 +1,38 @@
 interface ParamsInterface {
-	[prop: string]: string | number
+  [prop: string]: string | number
 }
 
 export function stringify(params: ParamsInterface, flag = true): string {
-	if (!params) return ''
+  if (!params) return ''
 
-	let string = ''
+  let string = ''
 
-	Object.keys(params).forEach(key => {
-		const param = `${key}=${params[key]}`
+  Object.keys(params).forEach(key => {
+    const param = `${key}=${params[key]}`
 
-		string += string === '' ? param : `&${param}`
-	})
+    string += string === '' ? param : `&${param}`
+  })
 
-	return flag ? '?' + string : string
+  return flag ? '?' + string : string
 }
 
 export function parser(string: string): ParamsInterface {
-	if (!string) return {}
+  if (!string) return {}
 
-	const paramsObj = string
-		.split('?')[1]
-		.split('&')
-		.map(item => {
-			const [key, value] = item.split('=')
+  const paramsObj = string
+    .split('?')[1]
+    .split('&')
+    .map(item => {
+      const [key, value] = item.split('=')
 
-			return { [key]: value }
-		})
+      return { [key]: value }
+    })
 
-	const params: ParamsInterface = {}
+  const params: ParamsInterface = {}
 
-	paramsObj.forEach(item => {
-		Object.keys(item).forEach(key => (params[key] = item[key]))
-	})
+  paramsObj.forEach(item => {
+    Object.keys(item).forEach(key => (params[key] = item[key]))
+  })
 
-	return params
+  return params
 }

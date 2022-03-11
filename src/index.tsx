@@ -8,10 +8,10 @@ import { BrowserRouter } from 'react-router-dom'
 import 'styles/index.scss'
 
 ReactDOM.render(
-	<BrowserRouter>
-		<Provider store={store}>
-			<App />
-		</Provider>
-	</BrowserRouter>,
-	document.getElementById('app')
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById('app')
 )

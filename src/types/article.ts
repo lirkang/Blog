@@ -1,35 +1,35 @@
 export interface ArticleInterface {
-	readonly id: number
-	readonly create_at: string
+  readonly id: number
+  readonly create_at: string
 
-	readonly nickname: string
+  readonly nickname: string
 
-	readonly title: string
+  readonly title: string
 
-	readonly comment_count: number
+  readonly comment_count: number
 
-	readonly visit_count: number
+  readonly visit_count: number
 
-	readonly cover: string
+  readonly cover: string
 
-	readonly delete: number
-	readonly content: string
+  readonly delete: number
+  readonly content: string
 }
 
 export const defaultArticle: ArticleInterface = {
-	id: -1,
-	create_at: '',
+  id: -1,
+  create_at: '',
 
-	nickname: '',
+  nickname: '',
 
-	title: '',
+  title: '',
 
-	comment_count: -1,
+  comment_count: -1,
 
-	visit_count: -1,
+  visit_count: -1,
 
-	cover: '',
+  cover: '',
 
-	delete: 0,
-	content: ''
+  delete: 0,
+  content: ''
 }
