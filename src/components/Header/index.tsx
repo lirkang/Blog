@@ -1,19 +1,17 @@
-import { FC, ReactElement, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
-import { HeaderMenu } from '../types/heder'
+import { HeaderMenu } from 'types/heder'
 import {
 	CloseCircleOutlined,
 	PlusCircleFilled,
 	SearchOutlined
 } from '@ant-design/icons'
-import './index.css'
-import { stringify } from '@/utils/query'
 
-export interface HeaderInterface {
-	menus: HeaderMenu[]
-}
+import 'styles/header.css'
 
-const Header: FC<HeaderInterface> = ({ menus }): ReactElement => {
+import { stringify } from 'utils/query'
+
+const Header = ({ menus }: { menus: HeaderMenu[] }) => {
 	const navigate = useNavigate()
 	const InputRef = useRef<HTMLInputElement>(null)
 	const [value, setValue] = useState('')

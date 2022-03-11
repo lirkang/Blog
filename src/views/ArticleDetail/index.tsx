@@ -1,20 +1,25 @@
-import request from '@/api/request'
-import ArticleInfo from '@/components/context/ArticleInfo'
-import { ArticleInterface, defaultArticle } from '@/interface/article'
-import { StoreInterface } from '@/interface/redux'
+import request from 'api/request'
+import ArticleInfo from 'components/ArticleInfo'
+import { ArticleInterface, defaultArticle } from 'types/article'
+import { StoreInterface } from 'types/redux'
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import MarkDown from 'react-markdown'
-import './index.css'
-import { stringify } from '@/utils/query'
-import { CommentInterface } from '@/interface/comment'
-import ArticleComment from '@/components/context/Comment'
+
+import 'styles/article-detail.css'
+
+import { stringify } from 'utils/query'
+import { CommentInterface } from 'types/comment'
+import ArticleComment from 'components/Comment'
 
 const ArticleDetail = () => {
 	const [searchParams] = useSearchParams()
 	const [article, setArticle] = useState<ArticleInterface>(defaultArticle)
 	const [comment, setComment] = useState<CommentInterface[]>([])
+	const [isAnonymous, setAnonymous] = useState(true)
+	const [nickname, setNickname] = useState('')
+	const [avatarPath, setAvatarPath] = useState('')
 	const navigate = useNavigate()
 
 	const getArticleDetail = async () => {
@@ -33,6 +38,8 @@ const ArticleDetail = () => {
 		setComment(result.data)
 	}
 
+	const putComment = async () => {}
+
 	useEffect(() => {
 		if (!searchParams.has('id')) return navigate('/')
 
@@ -42,7 +49,7 @@ const ArticleDetail = () => {
 
 	return (
 		<div className='article-detail'>
-			<div className='article-detail__title'>{article.title}</div>
+			<div className='article-detail__title--article'>{article.title}</div>
 
 			<ArticleInfo
 				comment_count={article.comment_count}
@@ -51,19 +58,64 @@ const ArticleDetail = () => {
 				nickname={article.nickname}
 			/>
 
-			<div className='article-detail__content'>
+			<div className='article-detail__content--article'>
 				<MarkDown children={article.content} skipHtml />
 			</div>
 
-			<div className='article-comment__container'>
-				<span className='article-comment__title'>全部评论</span>
+			<div className='article-detail__comment-container--origin'>
+				<span className='article-detail__title--comment'>全部评论</span>
 				{comment.map(item => (
 					<ArticleComment {...item} key={item.id} />
 				))}
 			</div>
 
-			<div className='article-comment__input'>
-				<input type='text' />
+			<div className='article-detail__comment-input'>
+				<form onSubmit={event => event.preventDefault()}>
+					<div className='article-detail__comment-container--send'>
+						<div className='article-detail__comment-user_info'>
+							<label
+								htmlFor='用户名'
+								className='article-detail__comment-avatar--send'
+							>
+								<input
+									type='text'
+									value={nickname}
+									onChange={({ target }) => setNickname(target.value)}
+								/>
+							</label>
+
+							<label htmlFor='头像' className='article-detail__comment-avatar'>
+								{avatarPath ? (
+									<img src={avatarPath} alt='头像' />
+								) : (
+									<input type='file' accept='image/*' />
+								)}
+							</label>
+
+							<label
+								htmlFor='是否为匿名用户'
+								className='article-detail__comment-type'
+							>
+								<input
+									type='checkbox'
+									checked={isAnonymous}
+									onChange={() => setAnonymous(!isAnonymous)}
+								/>
+							</label>
+
+							<label htmlFor='发表评论'>
+								<input type='submit' onClick={putComment} value='发表评论' />
+							</label>
+						</div>
+
+						<label
+							htmlFor='评论内容'
+							className='article-detail__comment-content--send'
+						>
+							<textarea name='' cols={30} rows={10}></textarea>
+						</label>
+					</div>
+				</form>
 			</div>
 		</div>
 	)

@@ -1,5 +1,5 @@
-import { ActionInterface, ArticleEnum } from '@/interface/action'
-import { ArticleInterface } from '@/interface/article'
+import { ActionInterface, ArticleEnum } from 'types/action'
+import { ArticleInterface } from 'types/article'
 
 export default function article(
 	state: ArticleInterface[] = [],

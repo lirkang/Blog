@@ -1,22 +1,22 @@
-.article-comment {
+.comment {
 	display: flex;
 	align-items: center;
 
 	gap: 36px;
 }
 
-.article-comment__detail {
+.comment__detail {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 
-.article-comment__avatar {
+.comment__avatar {
 	width: 50px;
 	height: 50px;
 }
 
-.article-comment__avatar img {
+.comment__avatar img {
 	box-sizing: border-box;
 	cursor: pointer;
 
@@ -27,16 +27,16 @@
 	border: 1px solid #eee;
 }
 
-.article-comment__nickname {
+.comment__nickname {
 	color: #606266;
 	font-weight: bold;
 }
 
-.article-comment__date {
+.comment__date {
 	color: #606266;
 }
 
-.article-comment__content {
+.comment__content {
 	color: #303133;
 	font-size: 18px;
 	padding: 10px 0 20px 0;

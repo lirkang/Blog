@@ -1,22 +1,22 @@
-import request from '@/api/request'
-import Pagination from '@/components/common/Pagination'
-import { ArticleInterface } from '@/interface/article'
-import { StoreInterface } from '@/interface/redux'
-import { setArticle } from '@/redux/actions/article'
-import { stringify } from '@/utils/query'
-import { FC, useEffect, useState } from 'react'
+import request from 'api/request'
+import ArticleItem from 'components/ArticleItem'
+import Pagination from 'components/Pagination'
+import { ArticleInterface } from 'types/article'
+import { StoreInterface } from 'types/redux'
+import { setArticle } from 'redux/actions/article'
+import { stringify } from 'utils/query'
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import './index.css'
-import ArticleItem from '@/components/context/ArticleItem'
+import 'styles/article.css'
 
 export interface ArticlePropInterface {
 	article: ArticleInterface[]
 	setArticle: (data: ArticleInterface[]) => void
 }
 
-const Article: FC<ArticlePropInterface> = ({ article, setArticle }) => {
+const Article = ({ article, setArticle }: ArticlePropInterface) => {
 	const [total, setTotal] = useState(0)
 	const [index, setIndex] = useState(0)
 	const [size, setSize] = useState(15)

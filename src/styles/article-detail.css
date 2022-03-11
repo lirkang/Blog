@@ -7,16 +7,26 @@
 }
 
 .article-comment__title {
+	color: #303133;
 	font-weight: bold;
 	font-size: 18px;
 }
 
 .article-detail__title {
+	color: #303133;
+
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 48px;
 	margin-bottom: 12px;
 }
 
 .article-detail__content {
+	color: #303133;
+
 	margin-top: 12px;
+}
+
+.detail-comment__user-info {
+	display: flex;
+	align-items: center;
 }

@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom'
 
-import App from '@/App'
+import App from 'App'
 import { Provider } from 'react-redux'
-import store from '@/redux/store'
+import store from 'redux/store'
 import { BrowserRouter } from 'react-router-dom'
 
-import '@/components/common/index.css'
+import 'styles/index.css'
 
 ReactDOM.render(
 	<BrowserRouter>

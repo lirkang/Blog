@@ -1,13 +1,12 @@
-import '@/index.css'
 import { Route, Routes } from 'react-router-dom'
 
-import Header from '@/components/common/Header'
-import { HeaderMenu } from '@/components/common/types/heder'
+import Header from 'components/Header'
 import { HomeOutlined, UnorderedListOutlined } from '@ant-design/icons'
 
-import Home from '@/views/Home'
-import ArticleDetail from '@/views/ArticleDetail'
-import Article from '@/views/Article'
+import Home from 'views/Home'
+import ArticleDetail from 'views/ArticleDetail'
+import Article from 'views/Article'
+import { HeaderMenu } from 'types/heder'
 
 function App() {
 	const menus: HeaderMenu[] = [

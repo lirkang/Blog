@@ -1,9 +1,8 @@
-import request from '@/api/request'
-import { ArticleInterface } from '@/interface/article'
-import { StoreInterface } from '@/interface/redux'
-import { ResponseInterface } from '@/interface/response'
-import { setArticle } from '@/redux/actions/article'
-import { stringify } from '@/utils/query'
+import request from 'api/request'
+import { ArticleInterface } from 'types/article'
+import { StoreInterface } from 'types/redux'
+import { setArticle } from 'redux/actions/article'
+import { stringify } from 'utils/query'
 import { FC, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
@@ -14,7 +13,7 @@ export interface HomeInterface {
 	setArticle: (data: ArticleInterface[]) => void
 }
 
-const Home: FC<HomeInterface> = ({ article, setArticle }) => {
+const Home = ({ article, setArticle }: HomeInterface) => {
 	const navigate = useNavigate()
 
 	const getArticle = async () => {
@@ -33,7 +32,7 @@ const Home: FC<HomeInterface> = ({ article, setArticle }) => {
 
 	return (
 		<div className='home'>
-			<div className='home_article-container'>
+			<div className='home-article__container'>
 				{article.map(item => (
 					<div key={item.id}>{item.content}</div>
 				))}

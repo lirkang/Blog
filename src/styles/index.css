@@ -17,3 +17,7 @@ body {
 
 	background-color: #fff;
 }
+
+.transition {
+	transition: all 0.2s;
+}

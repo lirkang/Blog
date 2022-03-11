@@ -1,5 +1,5 @@
-import { ArticleEnum } from '@/interface/action'
-import { ArticleInterface } from '@/interface/article'
+import { ArticleEnum } from 'types/action'
+import { ArticleInterface } from 'types/article'
 
 export const setArticle = (data: ArticleInterface[]) => ({
 	type: ArticleEnum.set,

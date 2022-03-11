@@ -1,7 +1,7 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import './index.css'
+import 'styles/pagination.css'
 
 export interface PaginationInterface {
 	changeSize: (size: number) => void
@@ -11,13 +11,13 @@ export interface PaginationInterface {
 	size: number
 }
 
-const Pagination: FC<PaginationInterface> = ({
+const Pagination = ({
 	changeIndex,
 	changeSize,
 	total,
 	index,
 	size
-}) => {
+}: PaginationInterface) => {
 	const [indexLength, setIndexLength] = useState<null[]>([])
 
 	const emitChangeIndex = (currentIndex: number) => {
@@ -47,7 +47,7 @@ const Pagination: FC<PaginationInterface> = ({
 			<div
 				onClick={() => clickArrow(index === 0 || total <= size, -1)}
 				className={
-					'pagination-button arrow' +
+					'pagination__button pagination__button--type-arrow' +
 					(index === 0 || total <= size ? ' disabled' : '')
 				}
 			>
@@ -58,7 +58,8 @@ const Pagination: FC<PaginationInterface> = ({
 				<div
 					onClick={() => emitChangeIndex(currentIndex)}
 					className={
-						'pagination-button' + (index === currentIndex ? ' is-active' : '')
+						'pagination__button pagination__button--type-index' +
+						(index === currentIndex ? ' is-active' : '')
 					}
 					key={currentIndex}
 				>
@@ -71,7 +72,7 @@ const Pagination: FC<PaginationInterface> = ({
 					clickArrow(index + 1 === indexLength.length || total <= size, 1)
 				}
 				className={
-					'pagination-button arrow' +
+					'pagination__button pagination__button--type-arrow' +
 					(index + 1 === indexLength.length || total <= size ? ' disabled' : '')
 				}
 			>

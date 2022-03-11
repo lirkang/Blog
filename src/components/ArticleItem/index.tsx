@@ -1,16 +1,16 @@
-import { ArticleInterface } from '@/interface/article'
+import { ArticleInterface } from 'types/article'
 import { FC } from 'react'
 import ArticleInfo from '../ArticleInfo'
 
 import MarkDown from 'react-markdown'
 
-import './index.css'
+import 'styles/article-item.css'
 
 export interface ArticleItemInterface extends ArticleInterface {
 	onClick: (id: number) => void
 }
 
-const ArticleItem: FC<ArticleItemInterface> = ({
+const ArticleItem = ({
 	id,
 	comment_count,
 	content,
@@ -20,7 +20,7 @@ const ArticleItem: FC<ArticleItemInterface> = ({
 	nickname,
 	title,
 	onClick
-}) => {
+}: ArticleItemInterface) => {
 	return (
 		<div key={id} className='article-item'>
 			<div className='article-item__cover'>

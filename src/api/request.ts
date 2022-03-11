@@ -1,4 +1,4 @@
-import { ResponseInterface } from '@/interface/response'
+import { ResponseInterface } from 'types/response'
 
 export default function request<T>(
 	url: string,
