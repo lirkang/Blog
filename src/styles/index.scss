@@ -1,27 +1,39 @@
-@mixin padding {
-  padding: 24px;
+$font-color-primary: #303133;
+$font-color-regular: #606266;
+$font-color-secondary: #909399;
+
+$font-title-large: 48px;
+$font-title-regular: 36px;
+
+$font-large: 18px;
+$font-regular: 16px;
+$font-small: 14px;
+
+$background-color-regular: #eee;
+
+$border-primary: 1px solid #409eff;
+$border-regular: 1px solid #303133;
+$border-secondary: 1px solid #eee;
+
+$padding-large: 48px;
+$padding-regular: 24px;
+$padding-small: 12px;
+
+$margin-large: 24px;
+$margin-regular: 12px;
+$margin-small: 4px;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+@mixin flex-center($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
 }
 
-body {
-  background-color: #eee;
-}
-
-.router {
-  padding: 128px 128px $padding 128px;
-  min-width: 1250px;
-  max-width: 1300px;
-  margin: 0 auto;
-
-  border: 1px solid #eee;
-
-  background-color: #fff;
-}
-
-.transition {
-  transition: all 0.2s;
+@mixin transition($timer: 0.3s) {
+  transition: all $timer;
 }

@@ -37,7 +37,7 @@ const ArticleItem = ({
         </div>
 
         <div
-          className='article-item__preview transition'
+          className='article-item__preview'
           onClick={() => onClick(id)}
         >
           <MarkDown children={content.slice(0)} skipHtml />

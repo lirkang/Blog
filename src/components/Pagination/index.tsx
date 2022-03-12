@@ -47,7 +47,7 @@ const Pagination = ({
       <div
         onClick={() => clickArrow(index === 0 || total <= size, -1)}
         className={
-          'pagination__button pagination__button--type-arrow' +
+          'pagination__button--type-arrow' +
           (index === 0 || total <= size ? ' disabled' : '')
         }
       >
@@ -58,7 +58,7 @@ const Pagination = ({
         <div
           onClick={() => emitChangeIndex(currentIndex)}
           className={
-            'pagination__button pagination__button--type-index' +
+            'pagination__button--type-index' +
             (index === currentIndex ? ' is-active' : '')
           }
           key={currentIndex}
@@ -72,7 +72,7 @@ const Pagination = ({
           clickArrow(index + 1 === indexLength.length || total <= size, 1)
         }
         className={
-          'pagination__button pagination__button--type-arrow' +
+          'pagination__button--type-arrow' +
           (index + 1 === indexLength.length || total <= size ? ' disabled' : '')
         }
       >

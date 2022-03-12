@@ -1,129 +1,122 @@
-.header * {
-  margin: 0;
-  padding: 0;
-}
-
-.header-button {
-  position: fixed;
-  bottom: 5%;
-  right: 5%;
-
-  font-size: 56px;
-
-  cursor: pointer;
-
-  color: #c0c4cc;
-}
-
-.header-button:hover {
-  color: #409eff;
-}
+@import 'styles/index';
 
 .header {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 100%;
-  display: flex;
+  @include flex-center(space-between);
+
   padding: 4px 24px 0 24px;
-  border-bottom: 1px solid #eee;
+  border-bottom: $border-secondary;
+
   margin: 0 64px;
+
   height: 64px;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-}
 
-.header-menu__item {
-  font-size: 14px;
-  user-select: none;
-  color: #303133;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90%;
-  cursor: pointer;
-  padding: 0 12px;
-  margin: 0 12px;
-  border-bottom: 2px transparent solid;
-}
+  .header-menu {
+    height: 100%;
 
-.header-menu {
-  height: 100%;
-  display: flex;
-  align-items: end;
-}
+    @include flex-center(start, end);
 
-.header-menu__icon {
-  font-size: 12px;
-  margin-right: 12px;
-}
+    .header-menu__item {
+      font-size: $font-small;
+      user-select: none;
 
-.header-menu__item:hover {
-  color: #409eff;
-  border-bottom: 2px #409eff solid;
-}
+      color: $font-color-primary;
+      box-sizing: border-box;
 
-.header-menu__item.is-active {
-  color: #409eff;
-  border-bottom: 2px #409eff solid;
-}
+      @include flex-center();
+      @include transition();
 
-.header-input__searcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  color: #303133;
-}
+      height: 90%;
+      cursor: pointer;
 
-.header-input {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  border: 1px solid transparent;
-}
+      padding: 0 $padding-small;
+      margin: 0 $margin-regular;
+      border-bottom: 2px transparent solid;
 
-.header-input.is-hover {
-  border: 1px solid #eee;
-}
+      .header-menu__icon {
+        font-size: 12px;
+        margin-right: $margin-regular;
+      }
 
-.header-input.is-focus {
-  border: 1px solid #409eff;
-}
-.header-input.is-focus .header-input__searcher,
-.header-input.is-focus .header-input__cleaner {
-  color: #409eff;
-}
+      &.is-active,
+      &:hover {
+        color: #409eff;
+        border-bottom: 2px #409eff solid;
+      }
+    }
+  }
 
-.header-input input {
-  background-color: transparent;
-  height: 100%;
-  caret-color: #606266;
-  display: block;
-  height: 100%;
-  outline: none;
-  border: none;
-}
+  .header-input {
+    @include flex-center();
 
-.header-input__cleaner {
-  visibility: hidden;
-  font-size: 12px;
-  width: 24px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-}
+    border-radius: 4px;
+    border: 1px solid transparent;
 
-.header-input__cleaner.is-valuable {
-  visibility: visible;
-}
+    @include transition();
 
-.header-input input::placeholder {
-  padding-left: 4px;
-  color: #303133;
+    &.is-hover {
+      border: $border-secondary;
+    }
+
+    &.is-focus {
+      border: $border-primary;
+
+      .header-input__searcher,
+      .header-input__cleaner {
+        color: #409eff;
+      }
+    }
+
+    .header-input__cleaner {
+      visibility: hidden;
+      font-size: 12px;
+      width: 24px;
+
+      @include flex-center();
+      cursor: pointer;
+
+      &.is-valuable {
+        visibility: visible;
+      }
+    }
+
+    .header-input__searcher {
+      @include flex-center();
+      width: 42px;
+      height: 42px;
+      color: $font-color-primary;
+    }
+
+    input {
+      background-color: transparent;
+      height: 100%;
+      caret-color: $font-color-regular;
+      display: block;
+      outline: none;
+      border: none;
+
+      &::placeholder {
+        padding-left: 4px;
+        color: $font-color-primary;
+      }
+    }
+  }
+
+  .header-button {
+    @include transition();
+
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+
+    font-size: 56px;
+
+    cursor: pointer;
+
+    color: $font-color-primary;
+
+    &:hover {
+      color: #409eff;
+    }
+  }
 }

@@ -1,5 +1,7 @@
+@import 'styles/index';
+
 .article {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
+  @include flex-column;
+
+  gap: $padding-regular;
 }

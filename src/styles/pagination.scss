@@ -1,29 +1,36 @@
+@import 'styles/index';
+
 .pagination {
-  display: flex;
-  align-items: center;
+  @include flex-center(end);
   width: 100%;
-  justify-content: end;
-}
 
-.pagination-button.arrow {
-  font-size: 12px;
-}
+  .pagination__button {
+    &--type-index,
+    &--type-arrow {
+      @include transition;
+      font-weight: bold;
+      font-size: $font-small;
 
-.pagination-button {
-  font-weight: bold;
-  font-size: 14px;
-  padding: 8px;
-  margin: 0 4px;
-  cursor: pointer;
-  color: #303133;
-}
+      padding: 8px;
 
-.pagination-button:hover,
-.pagination-button.is-active {
-  color: #409eff;
-}
+      margin: 0 $margin-small;
 
-.pagination-button.arrow.disabled {
-  color: #606266;
-  cursor: not-allowed;
+      cursor: pointer;
+      color: $font-color-primary;
+
+      &:hover,
+      &.is-active {
+        color: #409eff;
+      }
+    }
+
+    &--type-arrow {
+      font-size: 12px;
+
+      &.disabled {
+        color: $font-color-regular;
+        cursor: not-allowed;
+      }
+    }
+  }
 }

@@ -9,6 +9,8 @@ import Article from 'views/Article'
 
 import { HeaderMenu } from 'types/heder'
 
+import 'styles/app.scss'
+
 function App() {
   const menus: HeaderMenu[] = [
     { icon: <HomeOutlined />, path: '/', title: '首页' },
@@ -17,7 +19,9 @@ function App() {
 
   return (
     <>
-      <Header menus={menus} />
+      <div className='header-container'>
+        <Header menus={menus} />
+      </div>
 
       <div className='router'>
         <Routes>

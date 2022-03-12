@@ -1,0 +1,25 @@
+@import 'styles/index';
+
+.home {
+  .home-article__container {
+    display: grid;
+
+    gap: $padding-regular;
+  }
+
+  .home-article__tip {
+    color: $font-color-secondary;
+
+    padding: $padding-large 0;
+
+    @include flex-center;
+
+    @include transition;
+
+    cursor: pointer;
+
+    &:hover {
+      color: $font-color-primary;
+    }
+  }
+}

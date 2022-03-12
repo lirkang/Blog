@@ -59,18 +59,13 @@ const Header = ({ menus }: { menus: HeaderMenu[] }) => {
       <div
         onMouseEnter={() => setHover('is-hover')}
         onMouseLeave={() => setHover('')}
-        className={`header-input transition ${hover} ${focus}`}
-        onClick={() => {
-          InputRef.current?.focus()
-        }}
+        className={`header-input ${hover} ${focus}`}
+        onClick={() => InputRef.current?.focus()}
       >
         <SearchOutlined onClick={search} className='header-input__searcher' />
 
         <input
-          onFocus={() => {
-            setFocus('is-focus')
-            setHover('')
-          }}
+          onFocus={() => setFocus('is-focus')}
           onBlur={() => setFocus('')}
           onKeyUp={({ keyCode }) => keyCode === 13 && search()}
           value={value}

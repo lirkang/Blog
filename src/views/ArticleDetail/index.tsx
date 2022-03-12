@@ -49,7 +49,7 @@ const ArticleDetail = () => {
 
   return (
     <div className='article-detail'>
-      <div className='article-detail__title--article'>{article.title}</div>
+      <div className='article-detail__article-title'>{article.title}</div>
 
       <ArticleInfo
         comment_count={article.comment_count}
@@ -58,65 +58,57 @@ const ArticleDetail = () => {
         nickname={article.nickname}
       />
 
-      <div className='article-detail__content--article'>
+      <div className='article-detail__article-content'>
         <MarkDown children={article.content} skipHtml />
       </div>
 
-      <div className='article-detail__comment-container--origin'>
-        <span className='article-detail__title--comment'>全部评论</span>
+      <div className='article-detail__comment-container'>
+        <span className='article-detail__comment-title'>全部评论</span>
         {comment.map(item => (
           <ArticleComment {...item} key={item.id} />
         ))}
       </div>
 
-      <div className='article-detail__comment-input'>
-        <form onSubmit={event => event.preventDefault()}>
-          <div className='article-detail__comment-container--send'>
-            <div className='article-detail__comment-user_info'>
-              <label
-                htmlFor='用户名'
-                className='article-detail__comment-avatar--send'
-              >
-                <input
-                  type='text'
-                  value={nickname}
-                  onChange={({ target }) => setNickname(target.value)}
-                />
-              </label>
+      <form onSubmit={event => event.preventDefault()}>
+        <div className='article-detail__form'>
+          <div className='article-detail__form-user_info'>
+            <label htmlFor='用户名' className='article-detail__form-nickname'>
+              <input
+                type='text'
+                value={nickname}
+                onChange={({ target }) => setNickname(target.value)}
+              />
+            </label>
 
-              <label htmlFor='头像' className='article-detail__comment-avatar'>
-                {avatarPath ? (
-                  <img src={avatarPath} alt='头像' />
-                ) : (
-                  <input type='file' accept='image/*' />
-                )}
-              </label>
-
-              <label
-                htmlFor='是否为匿名用户'
-                className='article-detail__comment-type'
-              >
-                <input
-                  type='checkbox'
-                  checked={isAnonymous}
-                  onChange={() => setAnonymous(!isAnonymous)}
-                />
-              </label>
-
-              <label htmlFor='发表评论'>
-                <input type='submit' onClick={putComment} value='发表评论' />
-              </label>
-            </div>
+            <label htmlFor='头像' className='article-detail__form-avatar'>
+              {avatarPath ? (
+                <img src={avatarPath} alt='头像' />
+              ) : (
+                <input type='file' accept='image/*' />
+              )}
+            </label>
 
             <label
-              htmlFor='评论内容'
-              className='article-detail__comment-content--send'
+              htmlFor='是否为匿名用户'
+              className='article-detail__form-type'
             >
-              <textarea name='' cols={30} rows={10}></textarea>
+              <input
+                type='checkbox'
+                checked={isAnonymous}
+                onChange={() => setAnonymous(!isAnonymous)}
+              />
+            </label>
+
+            <label htmlFor='发表评论' className='article-detail__form-button'>
+              <input type='submit' onClick={putComment} value='发表评论' />
             </label>
           </div>
-        </form>
-      </div>
+
+          <label htmlFor='评论内容' className='article-detail__form-content'>
+            <textarea name='' cols={30} rows={10}></textarea>
+          </label>
+        </div>
+      </form>
     </div>
   )
 }

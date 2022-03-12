@@ -1,32 +1,39 @@
-.article-comment__container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: 24px 0;
-  margin: 12px 0;
-}
+@import 'styles/index';
 
-.article-comment__title {
-  color: #303133;
-  font-weight: bold;
-  font-size: 18px;
-}
+.article-detail {
+  .article-detail__article-title {
+    font-size: $font-title-large;
 
-.article-detail__title {
-  color: #303133;
+    color: $font-color-primary;
 
-  font-weight: bold;
-  font-size: 48px;
-  margin-bottom: 12px;
-}
+    margin-bottom: $margin-regular;
 
-.article-detail__content {
-  color: #303133;
+    font-weight: bold;
+  }
 
-  margin-top: 12px;
-}
+  .article-detail__article-content {
+    color: $font-color-primary;
 
-.detail-comment__user-info {
-  display: flex;
-  align-items: center;
+    margin-top: $margin-regular;
+  }
+
+  .article-detail__comment-container {
+    @include flex-column;
+
+    gap: 24px;
+    padding: $padding-regular 0;
+    margin: $margin-regular 0;
+
+    .article-detail__comment-title {
+      color: $font-color-primary;
+      font-weight: bold;
+      font-size: $font-large;
+    }
+  }
+
+  .article-detail__form {
+    .article-detail__form-user_info {
+      @include flex-center(start);
+    }
+  }
 }
