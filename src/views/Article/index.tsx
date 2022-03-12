@@ -1,6 +1,6 @@
 import request from 'api/request'
 import ArticleItem from 'components/ArticleItem'
-import Pagination from 'components/Pagination'
+import Pagination from 'components/common/Pagination'
 import { ArticleInterface } from 'types/article'
 import { StoreInterface } from 'types/redux'
 import { setArticle } from 'redux/actions/article'

@@ -1,5 +1,5 @@
 import request from 'api/request'
-import ArticleInfo from 'components/ArticleInfo'
+import ArticleInfo from 'components/context/ArticleInfo'
 import { ArticleInterface, defaultArticle } from 'types/article'
 import { StoreInterface } from 'types/redux'
 import { useEffect, useState } from 'react'
@@ -12,6 +12,8 @@ import 'styles/article-detail.scss'
 import { stringify } from 'utils/query'
 import { CommentInterface } from 'types/comment'
 import ArticleComment from 'components/Comment'
+import Input from 'components/Input'
+import { SendOutlined } from '@ant-design/icons'
 
 const ArticleDetail = () => {
   const [searchParams] = useSearchParams()
@@ -73,14 +75,18 @@ const ArticleDetail = () => {
         <div className='article-detail__form'>
           <div className='article-detail__form-user_info'>
             <label htmlFor='用户名' className='article-detail__form-nickname'>
-              <input
-                type='text'
-                value={nickname}
-                onChange={({ target }) => setNickname(target.value)}
+              <span>名称: </span>
+
+              <Input
+                prefix={<SendOutlined />}
+                placeholder='输入评论...'
+                onSearch={search => console.log(search)}
               />
             </label>
 
             <label htmlFor='头像' className='article-detail__form-avatar'>
+              <span>头像: </span>
+
               {avatarPath ? (
                 <img src={avatarPath} alt='头像' />
               ) : (
@@ -92,6 +98,8 @@ const ArticleDetail = () => {
               htmlFor='是否为匿名用户'
               className='article-detail__form-type'
             >
+              <span>是否为匿名用户: </span>
+
               <input
                 type='checkbox'
                 checked={isAnonymous}

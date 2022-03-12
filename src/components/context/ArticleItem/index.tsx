@@ -1,5 +1,4 @@
 import { ArticleInterface } from 'types/article'
-import { FC } from 'react'
 import ArticleInfo from '../ArticleInfo'
 
 import MarkDown from 'react-markdown'

@@ -1,0 +1,60 @@
+@import 'styles/index';
+
+.input {
+  @include flex-center();
+
+  border-radius: 4px;
+
+  @include transition();
+
+  border: $border-secondary;
+
+  &.is-hover {
+    border: $border-regular;
+  }
+
+  &.is-focus {
+    border: $border-primary;
+
+    .input__prefix,
+    .input__cleaner {
+      color: #409eff !important;
+    }
+  }
+
+  .input__cleaner {
+    visibility: hidden;
+    font-size: 12px;
+    width: 24px;
+
+    @include flex-center();
+    cursor: pointer;
+
+    &.is-valuable {
+      visibility: visible;
+    }
+  }
+
+  .input__prefix {
+    cursor: pointer;
+
+    @include flex-center();
+    width: 42px;
+    height: 42px;
+    color: $font-color-primary;
+  }
+
+  input {
+    background-color: transparent;
+    height: 100%;
+    caret-color: $font-color-regular;
+    display: block;
+    outline: none;
+    border: none;
+
+    &::placeholder {
+      padding-left: 4px;
+      color: $font-color-primary;
+    }
+  }
+}

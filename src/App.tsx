@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import Header from 'components/Header'
+import Header from 'components/context/Header'
 import { HomeOutlined, UnorderedListOutlined } from '@ant-design/icons'
 
 import Home from 'views/Home'

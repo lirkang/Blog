@@ -32,8 +32,24 @@
   }
 
   .article-detail__form {
-    .article-detail__form-user_info {
+    @include flex-column();
+    gap: 24px;
+
+    .article-detail__form-nickname,
+    .article-detail__form-avatar,
+    .article-detail__form-button,
+    .article-detail__form-content {
       @include flex-center(start);
+
+      gap: 12px;
+
+      & > span {
+        color: $font-color-primary;
+      }
+    }
+
+    .article-detail__form-user_info {
+      @include flex-center(space-between);
     }
   }
 }

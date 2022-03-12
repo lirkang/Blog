@@ -1,26 +1,18 @@
-import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { HeaderMenu } from 'types/heder'
-import {
-  CloseCircleOutlined,
-  PlusCircleFilled,
-  SearchOutlined
-} from '@ant-design/icons'
+import { PlusCircleFilled } from '@ant-design/icons'
 
 import 'styles/header.scss'
 
 import { stringify } from 'utils/query'
+import Input from 'components/common/Input'
 
 const Header = ({ menus }: { menus: HeaderMenu[] }) => {
   const navigate = useNavigate()
-  const InputRef = useRef<HTMLInputElement>(null)
-  const [value, setValue] = useState('')
-  const [hover, setHover] = useState('')
-  const [focus, setFocus] = useState('')
   const [searchParams, setSearchParams] = useSearchParams()
   const location = useLocation()
 
-  const search = () => {
+  const search = (value: string) => {
     if (!value && !searchParams.has('search')) return
 
     const { pathname } = location
@@ -33,10 +25,6 @@ const Header = ({ menus }: { menus: HeaderMenu[] }) => {
     if (path === location.pathname) return
     else navigate(path)
   }
-
-  useEffect(() => {
-    if (searchParams.has('search')) setValue(searchParams.get('search')!)
-  }, [])
 
   return (
     <div className='header'>
@@ -56,30 +44,7 @@ const Header = ({ menus }: { menus: HeaderMenu[] }) => {
         ))}
       </div>
 
-      <div
-        onMouseEnter={() => setHover('is-hover')}
-        onMouseLeave={() => setHover('')}
-        className={`header-input ${hover} ${focus}`}
-        onClick={() => InputRef.current?.focus()}
-      >
-        <SearchOutlined onClick={search} className='header-input__searcher' />
-
-        <input
-          onFocus={() => setFocus('is-focus')}
-          onBlur={() => setFocus('')}
-          onKeyUp={({ keyCode }) => keyCode === 13 && search()}
-          value={value}
-          onChange={({ target }) => setValue(target.value)}
-          ref={InputRef}
-          type='text'
-          placeholder='搜索标题...'
-        />
-
-        <CloseCircleOutlined
-          onClick={() => setValue('')}
-          className={'header-input__cleaner' + (value ? ' is-valuable' : '')}
-        />
-      </div>
+      <Input onSearch={value => search(value)} placeholder='搜索...' />
 
       {location.pathname !== '/article/write' && (
         <div
