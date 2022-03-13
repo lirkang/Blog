@@ -1,27 +1,40 @@
 @import 'styles/index';
 
 .article-item {
+  cursor: pointer;
+
   border-bottom: $border-secondary;
   max-height: 300px;
 
   display: grid;
-  grid-template-columns: 40% 55%;
+  grid-template-columns: 70% 20%;
   justify-content: space-between;
-  padding-bottom: $padding-regular;
+
+  @include transition();
+
+  padding: 12px 16px;
+
+  &:hover {
+    background-color: #eee;
+  }
 
   .article-item__cover {
+    width: 100%;
     @include flex-center;
-    height: 300px;
-    width: 450px;
 
-    img {
-      cursor: pointer;
+    div {
+      height: 90px;
+      width: 90px;
+      border-radius: 4px;
 
-      width: 100%;
-      height: auto;
-      border: $border-secondary;
-      border-radius: 12px;
-      display: block;
+      @include flex-center;
+
+      img {
+        width: 100%;
+        height: auto;
+        border: $border-secondary;
+        display: block;
+      }
     }
   }
 
@@ -29,27 +42,29 @@
     max-height: 300px;
     width: 100%;
     display: grid;
-    grid-template-rows: 20% 60% 20%;
+    align-content: space-between;
+    grid-template-rows: 40% 30% 20%;
 
     .article-item__title {
       color: $font-color-primary;
-      cursor: pointer;
       letter-spacing: 1px;
-      font-weight: bold;
-      font-size: $font-title-regular;
+      font-size: 20px;
       line-height: 1.5;
     }
   }
 
   .article-item__preview {
     line-height: 1.5;
-    text-align: justify;
     color: $font-color-regular;
+
     width: 100%;
     font-size: $font-small;
+
     height: 100%;
-    cursor: pointer;
+
+    text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 
     &:hover {
       color: $font-color-primary;

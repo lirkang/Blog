@@ -1,23 +1,26 @@
-import { SearchOutlined, CloseCircleOutlined } from '@ant-design/icons'
+import { CloseCircleFilled } from '@ant-design/icons'
 import { ReactElement, useRef, useState } from 'react'
 
 import './input.scss'
 
 export interface InputInterface {
   prefix?: ReactElement
-  suffix?: ReactElement
-  onSearch: (search: string) => void
+  onEnter?: (search: string) => void
+  onChange?: (value: string) => void
   placeholder?: string
+  value?: string
+  showCleaner?: boolean
 }
 
 const Input = ({
-  prefix = <SearchOutlined />,
-  suffix = <CloseCircleOutlined />,
-  onSearch,
-  placeholder = ''
+  prefix = <></>,
+  onEnter = () => {},
+  value = '',
+  placeholder = '',
+  onChange = () => {},
+  showCleaner = false
 }: InputInterface) => {
   const InputRef = useRef<HTMLInputElement>(null)
-  const [value, setValue] = useState('')
   const [hover, setHover] = useState('')
   const [focus, setFocus] = useState('')
 
@@ -28,27 +31,25 @@ const Input = ({
       className={`input ${hover} ${focus}`}
       onClick={() => InputRef.current?.focus()}
     >
-      <div className='input__prefix' onClick={() => onSearch(value)}>
-        {prefix}
-      </div>
-
       <input
         onFocus={() => setFocus('is-focus')}
         onBlur={() => setFocus('')}
-        onKeyUp={({ keyCode }) => keyCode === 13 && onSearch(value)}
+        onKeyUp={({ keyCode }) => keyCode === 13 && onEnter(value)}
         value={value}
-        onChange={({ target }) => setValue(target.value)}
+        onChange={({ target }) => onChange(target.value)}
         ref={InputRef}
         type='text'
         placeholder={placeholder}
       />
 
-      <div
-        onClick={() => setValue('')}
-        className={'input__cleaner' + (value ? ' is-valuable' : '')}
-      >
-        {suffix}
-      </div>
+      {showCleaner && (
+        <div
+          onClick={() => onChange('')}
+          className={'input__cleaner' + (value ? ' is-valuable' : '')}
+        >
+          <CloseCircleFilled />
+        </div>
+      )}
     </div>
   )
 }

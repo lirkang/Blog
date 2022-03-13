@@ -1,25 +1,11 @@
 @import 'styles/index';
 
 .home {
-  .home-article__container {
-    display: grid;
+  @include flex-column;
 
-    gap: $padding-regular;
-  }
+  border: $border-secondary;
 
-  .home-article__tip {
-    color: $font-color-secondary;
+  border-radius: 12px;
 
-    padding: $padding-large 0;
-
-    @include flex-center;
-
-    @include transition;
-
-    cursor: pointer;
-
-    &:hover {
-      color: $font-color-primary;
-    }
-  }
+  overflow: hidden;
 }

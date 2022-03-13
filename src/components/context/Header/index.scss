@@ -1,0 +1,32 @@
+@import 'styles/index';
+
+.header {
+  height: 64px;
+
+  @include flex-center();
+
+  position: relative;
+
+  .header-title {
+    font-weight: bold;
+    font-size: 22px;
+
+    letter-spacing: 1px;
+  }
+
+  .header-back,
+  .header-button {
+    position: absolute;
+  }
+
+  .header-back {
+    cursor: pointer;
+    color: #409eff;
+    font-size: 28px;
+    left: 12px;
+  }
+
+  .header-button {
+    right: 12px;
+  }
+}

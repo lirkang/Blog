@@ -1,7 +1,7 @@
 import { CommentInterface } from 'types/comment'
 import formatDate from 'utils/formatDate'
 
-import 'styles/comment.scss'
+import './index.scss'
 
 const ArticleComment = ({
   id,

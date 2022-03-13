@@ -3,37 +3,45 @@ import {
   EditFilled,
   EyeFilled,
   MessageFilled,
-  ClockCircleFilled
+  ClockCircleFilled,
+  AppstoreFilled
 } from '@ant-design/icons'
 
-import 'styles/article-info.scss'
+import './index.scss'
+import { ArticleInterface } from 'types/article'
 
-export interface ArticleInfoInterface {
-  visit_count: number
-  comment_count: number
-  nickname: string
-  create_at: string
+export interface ArticleInfoInterface extends ArticleInterface {
+  simple: boolean
 }
 
 const ArticleInfo = ({
   visit_count,
   comment_count,
   nickname,
-  create_at
+  create_at,
+  simple = false,
+  category
 }: ArticleInfoInterface) => {
   return (
-    <div className='article-item__info'>
-      <EditFilled className='article-item__icon' />
-      <div className='article-item__author'>{nickname}</div>
+    <div className='article-info'>
+      {simple && <EditFilled className='article-info__icon' />}
+      <div className='article-info__author'>{nickname}</div>
 
-      <EyeFilled className='article-item__icon' />
-      <div className='article-item__visit'>{visit_count}</div>
+      {simple && (
+        <>
+          <EyeFilled className='article-info__icon' />
+          <div className='article-info__visit'>{visit_count}</div>
 
-      <MessageFilled className='article-item__icon' />
-      <div className='article-item__comment'>{comment_count}</div>
+          <MessageFilled className='article-info__icon' />
+          <div className='article-info__comment'>{comment_count}</div>
+        </>
+      )}
 
-      <ClockCircleFilled className='article-item__icon' />
-      <div className='article-item__date'>{formatDate(create_at)}</div>
+      {simple && <AppstoreFilled className='article-info__icon' />}
+      <div className='article-info__introduce'>{category}</div>
+
+      {simple && <ClockCircleFilled className='article-info__icon' />}
+      <div className='article-info__date'>{formatDate(create_at)}</div>
     </div>
   )
 }

@@ -2,8 +2,8 @@ import { ResponseInterface } from 'types/response'
 
 export default function request<T>(
   url: string,
-  method = 'GET',
-  body?: string
+  method: 'GET' | 'POST' | 'PUT' = 'GET',
+  body?: string | FormData
 ): Promise<ResponseInterface<T>> {
   return new Promise(async resolve => {
     const result = await fetch(`http://localhost:623${url}`, {

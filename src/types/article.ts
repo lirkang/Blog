@@ -14,6 +14,8 @@ export interface ArticleInterface {
 
   readonly delete: number
   readonly content: string
+  readonly introduce: string
+  readonly category: string
 }
 
 export const defaultArticle: ArticleInterface = {
@@ -31,5 +33,7 @@ export const defaultArticle: ArticleInterface = {
   cover: '',
 
   delete: 0,
-  content: ''
+  content: '',
+  introduce: '',
+  category: ''
 }

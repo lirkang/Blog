@@ -1,0 +1,29 @@
+@import 'styles/index';
+.button {
+  background-color: $background-color-primary;
+  user-select: none;
+
+  @include transition();
+  @include flex-center();
+
+  color: #fff;
+  font-size: $font-small;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 6px 16px;
+
+  &:hover {
+    background-color: #53a8ff;
+  }
+
+  &:active {
+    background-color: #3a8ee6;
+  }
+
+  &.is-loading {
+    justify-content: space-evenly;
+    background-color: #66b1ff;
+    cursor: not-allowed;
+  }
+}

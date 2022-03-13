@@ -1,35 +1,43 @@
 import { Route, Routes } from 'react-router-dom'
 
-import Header from 'components/context/Header'
-import { HomeOutlined, UnorderedListOutlined } from '@ant-design/icons'
-
-import Home from 'views/Home'
-import ArticleDetail from 'views/ArticleDetail'
-import Article from 'views/Article'
-
-import { HeaderMenu } from 'types/heder'
+import Center from 'layout/Center'
+import Left from 'layout/Left'
+import Right from 'layout/Right'
 
 import 'styles/app.scss'
+import { lazy, Suspense } from 'react'
 
-function App() {
-  const menus: HeaderMenu[] = [
-    { icon: <HomeOutlined />, path: '/', title: '首页' },
-    { icon: <UnorderedListOutlined />, path: '/article', title: '文章列表' }
-  ]
+const App = () => {
+  const Home = lazy(() => import('views/Home'))
+  const Detail = lazy(() => import('views/Detail'))
 
   return (
     <>
-      <div className='header-container'>
-        <Header menus={menus} />
-      </div>
+      <Left className='left' />
 
-      <div className='router'>
+      <Center className='center'>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/article' element={<Article />} />
-          <Route path='/article/detail' element={<ArticleDetail />} />
+          <Route
+            path='/'
+            element={
+              <Suspense fallback={<></>}>
+                <Home />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path='/detail'
+            element={
+              <Suspense fallback={<></>}>
+                <Detail />
+              </Suspense>
+            }
+          />
         </Routes>
-      </div>
+      </Center>
+
+      <Right className='right' />
     </>
   )
 }

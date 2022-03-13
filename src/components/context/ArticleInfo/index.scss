@@ -1,21 +1,23 @@
 @import 'styles/index';
 
-.article-item__info {
+.article-info {
   color: $font-color-regular;
 
   @include flex-center(start);
 
   letter-spacing: 1px;
 
-  .article-item__icon {
+  .article-info__icon {
     font-size: $font-small;
     margin-right: $margin-small;
   }
 
-  .article-item__author,
-  .article-item__visit,
-  .article-item__comment,
-  .article-item__date {
+  .article-info__author,
+  .article-info__visit,
+  .article-info__comment,
+  .article-info__introduce,
+  .article-info__date {
+    font-size: 14px;
     margin: 0 $margin-regular 0 $margin-small;
   }
 }

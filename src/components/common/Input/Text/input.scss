@@ -1,6 +1,10 @@
 @import 'styles/index';
 
 .input {
+  height: 32px;
+
+  position: relative;
+
   @include flex-center();
 
   border-radius: 4px;
@@ -9,39 +13,26 @@
 
   border: $border-secondary;
 
-  &.is-hover {
-    border: $border-regular;
-  }
+  padding-left: 12px;
 
   &.is-focus {
     border: $border-primary;
-
-    .input__prefix,
-    .input__cleaner {
-      color: #409eff !important;
-    }
   }
 
   .input__cleaner {
+    color: $font-color-regular;
     visibility: hidden;
     font-size: 12px;
-    width: 24px;
 
-    @include flex-center();
+    position: absolute;
+
+    right: 4px;
+
     cursor: pointer;
 
     &.is-valuable {
       visibility: visible;
     }
-  }
-
-  .input__prefix {
-    cursor: pointer;
-
-    @include flex-center();
-    width: 42px;
-    height: 42px;
-    color: $font-color-primary;
   }
 
   input {
@@ -53,6 +44,7 @@
     border: none;
 
     &::placeholder {
+      user-select: none;
       padding-left: 4px;
       color: $font-color-primary;
     }

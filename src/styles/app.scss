@@ -15,21 +15,8 @@ body {
   max-width: 1200px;
 
   #app {
-    .router {
-      padding-top: 96px;
-
-      max-width: 1200px;
-    }
-
-    .header-container {
-      position: fixed;
-
-      z-index: 2;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      background-color: #fff;
-    }
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    justify-content: space-evenly;
   }
 }

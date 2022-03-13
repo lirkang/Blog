@@ -1,17 +1,26 @@
-import { SearchOutlined, CloseCircleOutlined } from '@ant-design/icons'
-import { ReactElement, useRef, useState } from 'react'
-
+import { LoadingOutlined } from '@ant-design/icons'
 import './index.scss'
 
 export interface ButtonInterface {
-  prefix?: ReactElement
-  suffix?: ReactElement
-  onSearch: (search: string) => void
-  placeholder?: string
+  onClick?: () => void
+  text?: string
+  loading?: boolean
 }
 
-const Button = ({}: ButtonInterface) => {
-  return <div></div>
+const Button = ({
+  onClick = () => {},
+  text,
+  loading = false
+}: ButtonInterface) => {
+  return (
+    <div
+      onClick={() => !loading && onClick()}
+      className={`button ${loading ? 'is-loading' : ''}`}
+    >
+      {loading && <LoadingOutlined />}
+      {text}
+    </div>
+  )
 }
 
 export default Button

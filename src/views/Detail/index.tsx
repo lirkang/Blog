@@ -11,11 +11,14 @@ import 'styles/article-detail.scss'
 
 import { stringify } from 'utils/query'
 import { CommentInterface } from 'types/comment'
-import ArticleComment from 'components/Comment'
-import Input from 'components/Input'
+import Input from 'components/common/Input/Text'
+import ArticleComment from 'components/context/Comment'
 import { SendOutlined } from '@ant-design/icons'
+import Switch from 'components/common/Input/Switch'
+import Button from 'components/common/Button'
+import Upload from 'components/common/Input/Upload'
 
-const ArticleDetail = () => {
+const Detail = () => {
   const [searchParams] = useSearchParams()
   const [article, setArticle] = useState<ArticleInterface>(defaultArticle)
   const [comment, setComment] = useState<CommentInterface[]>([])
@@ -23,8 +26,10 @@ const ArticleDetail = () => {
   const [nickname, setNickname] = useState('')
   const [avatarPath, setAvatarPath] = useState('')
   const navigate = useNavigate()
+  const [form, setForm] = useState({})
+  const [avatar, setAvatar] = useState('')
 
-  const getArticleDetail = async () => {
+  const getDetail = async () => {
     const { result } = await request<ArticleInterface>(
       `/data/article/${searchParams.get('id')}`
     )
@@ -32,7 +37,7 @@ const ArticleDetail = () => {
     setArticle(result.data as ArticleInterface)
   }
 
-  const getCommentOfArticle = async () => {
+  const getComment = async () => {
     const { result } = await request<CommentInterface[]>(
       `/data/comment${stringify({ id: searchParams.get('id')! })}`
     )
@@ -45,20 +50,15 @@ const ArticleDetail = () => {
   useEffect(() => {
     if (!searchParams.has('id')) return navigate('/')
 
-    getArticleDetail()
-    getCommentOfArticle()
+    getDetail()
+    getComment()
   }, [])
 
   return (
     <div className='article-detail'>
       <div className='article-detail__article-title'>{article.title}</div>
 
-      <ArticleInfo
-        comment_count={article.comment_count}
-        create_at={article.create_at}
-        visit_count={article.visit_count}
-        nickname={article.nickname}
-      />
+      <ArticleInfo simple {...article} />
 
       <div className='article-detail__article-content'>
         <MarkDown children={article.content} skipHtml />
@@ -74,51 +74,60 @@ const ArticleDetail = () => {
       <form onSubmit={event => event.preventDefault()}>
         <div className='article-detail__form'>
           <div className='article-detail__form-user_info'>
-            <label htmlFor='用户名' className='article-detail__form-nickname'>
+            <div className='article-detail__form-nickname'>
               <span>名称: </span>
 
               <Input
                 prefix={<SendOutlined />}
-                placeholder='输入评论...'
-                onSearch={search => console.log(search)}
+                value={nickname}
+                onChange={value => setNickname(value)}
+                showCleaner
+                placeholder='输入名称...'
+                onEnter={search => console.log(search)}
               />
-            </label>
+            </div>
 
-            <label htmlFor='头像' className='article-detail__form-avatar'>
+            <div className='article-detail__form-avatar'>
               <span>头像: </span>
 
-              {avatarPath ? (
-                <img src={avatarPath} alt='头像' />
-              ) : (
-                <input type='file' accept='image/*' />
-              )}
-            </label>
+              <Upload
+                uploadPath='/data/upload'
+                accept='image/*'
+                onChange={files => setAvatar(files as string)}
+                render={() => (
+                  <div className=''>
+                    <Button text='上传' />
 
-            <label
-              htmlFor='是否为匿名用户'
-              className='article-detail__form-type'
-            >
+                    {avatar && (
+                      <img
+                        onClick={event => event.preventDefault()}
+                        src={'http://localhost:623/public/' + avatar}
+                        alt='头像'
+                      />
+                    )}
+                  </div>
+                )}
+              />
+            </div>
+
+            <div className='article-detail__form-type'>
               <span>是否为匿名用户: </span>
 
-              <input
-                type='checkbox'
-                checked={isAnonymous}
-                onChange={() => setAnonymous(!isAnonymous)}
-              />
-            </label>
+              <Switch status />
+            </div>
 
-            <label htmlFor='发表评论' className='article-detail__form-button'>
-              <input type='submit' onClick={putComment} value='发表评论' />
-            </label>
+            <div className='article-detail__form-button'>
+              <Button onClick={putComment} text='发表评论' />
+            </div>
           </div>
 
-          <label htmlFor='评论内容' className='article-detail__form-content'>
+          <div className='article-detail__form-content'>
             <textarea name='' cols={30} rows={10}></textarea>
-          </label>
+          </div>
         </div>
       </form>
     </div>
   )
 }
 
-export default connect(({}: StoreInterface) => ({}), {})(ArticleDetail)
+export default connect(({}: StoreInterface) => ({}), {})(Detail)

@@ -1,7 +1,0 @@
-@import 'styles/index';
-
-.article {
-  @include flex-column;
-
-  gap: $padding-regular;
-}

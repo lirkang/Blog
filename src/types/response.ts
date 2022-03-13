@@ -3,6 +3,7 @@ export interface ResponseInterface<T> {
     readonly data: T | []
     readonly total?: number
     readonly token?: string
+    readonly file?: string
   }
 
   readonly status: number
