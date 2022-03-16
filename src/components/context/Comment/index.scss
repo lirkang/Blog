@@ -2,41 +2,43 @@
 
 .comment {
   @include flex-center(start);
-  gap: 36px;
+  gap: 12px;
 
-  .comment__detail {
-    @include flex-column;
-    justify-content: space-between;
+  .comment__main {
+    @include flex-column();
+
+    .comment__detail {
+      @include flex-center(start);
+      gap: 12px;
+
+      .comment__nickname {
+        color: $font-color-primary;
+        font-size: $font-small;
+      }
+
+      .comment__date {
+        color: $font-color-secondary;
+        font-size: $font-small;
+      }
+    }
+
+    .comment__content {
+      color: $font-color-primary;
+      font-size: $font-regular;
+      padding: 10px 0 20px 0;
+    }
   }
 
   .comment__avatar {
-    width: 50px;
-    height: 50px;
-
     img {
       box-sizing: border-box;
       cursor: pointer;
 
-      height: 100%;
-      width: 100%;
+      width: 36px;
+      height: 36px;
 
       border-radius: 50%;
       border: $border-secondary;
     }
-  }
-
-  .comment__nickname {
-    color: $font-color-regular;
-    font-weight: bold;
-  }
-
-  .comment__date {
-    color: $font-color-regular;
-  }
-
-  .comment__content {
-    color: $font-color-primary;
-    font-size: $font-large;
-    padding: 10px 0 20px 0;
   }
 }
